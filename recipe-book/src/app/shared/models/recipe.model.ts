@@ -15,5 +15,6 @@ export class Recipe {
     this.name = name;
     this.description = description;
     this.imgSrc = imgSrc;
+    this.ingredients = ingredients;
   }
 }
