@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { Ingredient } from 'src/app/shared/models/ingredient.model';
-import { ShoppingListService } from 'src/app/shared/services/shopping-list.service';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
