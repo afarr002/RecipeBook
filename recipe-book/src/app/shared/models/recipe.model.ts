@@ -3,18 +3,18 @@ import { Ingredient } from './ingredient.model';
 export class Recipe {
   public name: string;
   public description: string;
-  public imgSrc: string;
+  public imageUrl: string;
   public ingredients: Ingredient[];
 
   constructor(
     name: string,
     description: string,
-    imgSrc: string,
+    imageUrl: string,
     ingredients: Ingredient[]
   ) {
     this.name = name;
     this.description = description;
-    this.imgSrc = imgSrc;
+    this.imageUrl = imageUrl;
     this.ingredients = ingredients;
   }
 }

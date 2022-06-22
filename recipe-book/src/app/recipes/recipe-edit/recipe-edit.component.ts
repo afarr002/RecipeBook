@@ -64,7 +64,7 @@ export class RecipeEditComponent implements OnInit {
     if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
       recipeName = recipe.name;
-      recipeImgPath = recipe.imgSrc;
+      recipeImgPath = recipe.imageUrl;
       recipeDescription = recipe.description;
 
       if (recipe['ingredients']) {
