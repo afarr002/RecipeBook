@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { RecipeService } from '../recipe.service';
@@ -27,6 +27,10 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    console.log(this.recipeForm);
+  }
+
   private initForm() {
     let recipeName = '';
     let recipeImgPath = '';
@@ -40,15 +44,13 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
-      recipeData: new FormGroup({
-        name: new FormControl(recipeName),
-        imageUrl: new FormControl(recipeImgPath),
-        Description: new FormControl(recipeDescription),
-      }),
-      // ingredientData: new FormGroup({
-      //   ingredientName: new FormControl(null),
-      //   ingredientAmount: new FormControl(null),
-      // }),
+      name: new FormControl(recipeName),
+      imageUrl: new FormControl(recipeImgPath),
+      description: new FormControl(recipeDescription),
     });
+    // ingredientData: new FormGroup({
+    //   ingredientName: new FormControl(null),
+    //   ingredientAmount: new FormControl(null),
+    // }),
   }
 }

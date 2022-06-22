@@ -32,7 +32,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     RecipeStartComponent,
     RecipeEditComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [ShoppingListService],
   bootstrap: [AppComponent],
 })
