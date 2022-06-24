@@ -10,6 +10,8 @@ import { AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
   loginMode = true;
+  isLoading = false;
+  error: string = null;
 
   constructor(private authService: AuthService) {}
 
@@ -24,6 +26,7 @@ export class AuthComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
     if (this.loginMode) {
       // add login logic here
     } else {
@@ -32,9 +35,12 @@ export class AuthComponent implements OnInit {
       this.authService.signup(email, password).subscribe(
         (res) => {
           console.log(res);
+          this.isLoading = false;
         },
         (err) => {
-          console.log(err);
+          console.log(err.error.error.message);
+          this.error = `An error has occured: ${err.error.error.message}`;
+          this.isLoading = false;
         }
       );
     }

@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
@@ -24,6 +25,7 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
     AppComponent,
     AuthComponent,
     HeaderComponent,
+    LoadingSpinnerComponent,
     RecipesComponent,
     RecipeDetailComponent,
     RecipeEditComponent,
