@@ -1,8 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
+
+import { User } from './user.model';
 
 export interface AuthResponseData {
   idToken: string;
@@ -21,6 +23,8 @@ AuthResponseData is the format of the data that we will receive back from the ba
   providedIn: 'root',
 })
 export class AuthService {
+  user = new Subject<User>();
+
   constructor(private http: HttpClient) {}
 
   signup(email: string, password: string) {
@@ -33,7 +37,17 @@ export class AuthService {
           returnSecureToken: true,
         }
       )
-      .pipe(catchError(this.errorHandling));
+      .pipe(
+        catchError(this.errorHandling),
+        tap((resData) => {
+          this.handleAuthentication(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
+        })
+      );
   }
 
   login(email: string, password: string) {
@@ -46,7 +60,28 @@ export class AuthService {
           returnSecureToken: true,
         }
       )
-      .pipe(catchError(this.errorHandling));
+      .pipe(
+        catchError(this.errorHandling),
+        tap((resData) => {
+          this.handleAuthentication(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
+        })
+      );
+  }
+
+  private handleAuthentication(
+    email: string,
+    userId: string,
+    token: string,
+    expiresIn: number
+  ) {
+    const tokenExp = new Date(new Date().getTime() + expiresIn * 1000); // creates a date for the token expiration since it is returned to us in seconds from firebase
+    const user = new User(email, userId, token, tokenExp);
+    this.user.next(user);
   }
 
   private errorHandling(errorRes: HttpErrorResponse) {
