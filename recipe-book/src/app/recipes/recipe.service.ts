@@ -12,28 +12,29 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 })
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
+  private recipes: Recipe[] = [];
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Test Recipe',
-      'This is a test description',
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Test Ingredient 1', 1),
-        new Ingredient('Test Ingredient 2', 20),
-      ]
-    ),
-    new Recipe(
-      'Different Test Recipe',
-      'This is a different test description',
-      'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-      [
-        new Ingredient('Test Ingredient 1', 1),
-        new Ingredient('Test Ingredient 2', 2),
-        new Ingredient('Test Ingredient 3', 5),
-      ]
-    ),
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'Test Recipe',
+  //     'This is a test description',
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Test Ingredient 1', 1),
+  //       new Ingredient('Test Ingredient 2', 20),
+  //     ]
+  //   ),
+  //   new Recipe(
+  //     'Different Test Recipe',
+  //     'This is a different test description',
+  //     'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
+  //     [
+  //       new Ingredient('Test Ingredient 1', 1),
+  //       new Ingredient('Test Ingredient 2', 2),
+  //       new Ingredient('Test Ingredient 3', 5),
+  //     ]
+  //   ),
+  // ];
 
   constructor(private shoppingListService: ShoppingListService) {}
 
