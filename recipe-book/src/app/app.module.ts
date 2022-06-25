@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AlertComponent } from './shared/alert/alert.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -21,9 +22,16 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
+/*
+  dynamically creating alert componenet instead of using ngIf
+
+import { PlaceholderDirective } from './shared/directives/placeholder.directive';
+*/
+
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     AuthComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
@@ -36,6 +44,10 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     ShoppingEditComponent,
     ShoppingListComponent,
     DropdownDirective,
+    /*
+  dynamically creating alert componenet instead of using ngIf
+    PlaceholderDirective,
+    */
   ],
   imports: [
     AppRoutingModule,
@@ -52,5 +64,14 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     },
   ],
   bootstrap: [AppComponent],
+  /*
+    dynamically creating alert componenet instead of using ngIf
+    -*- note: this is only needed if you are using angular version 9 or before!  -*-
+
+    entryComponents: [
+      AlertComponent
+    ]
+
+  */
 })
 export class AppModule {}
