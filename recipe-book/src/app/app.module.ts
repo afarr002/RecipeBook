@@ -5,14 +5,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RecipesModule } from './recipes/recipes.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 import { AppComponent } from './app.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
@@ -29,8 +28,6 @@ import { PlaceholderDirective } from './shared/directives/placeholder.directive'
     AuthComponent,
     HeaderComponent,
     LoadingSpinnerComponent,
-    ShoppingEditComponent,
-    ShoppingListComponent,
     DropdownDirective,
     /*
   dynamically creating alert componenet instead of using ngIf
@@ -44,6 +41,7 @@ import { PlaceholderDirective } from './shared/directives/placeholder.directive'
     HttpClientModule,
     ReactiveFormsModule,
     RecipesModule,
+    ShoppingListModule,
   ],
   providers: [
     {
