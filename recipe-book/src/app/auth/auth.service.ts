@@ -156,7 +156,7 @@ export class AuthService {
           'There is no user with this email/password combo, please check password or signup!';
       case 'USER_DISABLED':
         errorMessage =
-          'This account has been locked, please contect an administrator!';
+          'This account has been locked, please contact an administrator!';
     }
     return throwError(() => new Error(errorMessage));
   }
